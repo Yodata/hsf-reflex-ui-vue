@@ -1,18 +1,24 @@
 # hsf-reflex-ui-vue
 
-> A Vue.js project
+This is the Vue UI for the REflex data sharing UI.  https://reflex-ui.yodata.me
 
-## Build Setup
+UI dev/test and build happens in this repository.
 
-``` bash
-# install dependencies
-npm install
+Deploy to:
+- developmnent: yodata/hsf-reflex-ui
+- production: yodata/hsf-reflex-ui2
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+## install
+```bash
+$ npm install
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## development
+```bash
+$ npm run dev
+```
+
+## build
+```
+$ npm run build
+```
