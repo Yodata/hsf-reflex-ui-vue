@@ -24,6 +24,19 @@
         </b-dropdown>
       </div>
     </section>
+    <b-collapse :open="currentUserIsFranchiseAdmin">
+      <section class="section">
+        <div class="container">
+          <div class="notification box" style="background-color: rgb(231, 231, 231);">
+            <h1 class="heading title">Franchise Settings:</h1>
+            <b-switch
+              v-model="franchise.agentControl"
+              @input="handleAuth(application.identifier, $event)"
+            >{{franchise.agentControl ? 'Franchise agents manage their own vendor data access.': 'All franchise agents share the data access settings configured here.'}}</b-switch>
+          </div>
+        </div>
+      </section>
+    </b-collapse>
     <section id="app_list" class="section">
       <div class="container">
         <div class="tile is-ancestor" style="flex-wrap: wrap;">
@@ -67,6 +80,11 @@
         </div>
       </div>
     </section>
+    <footer class="footer">
+      <div class="container">
+        <a href="#" class="link">Privacy Policy</a>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -81,13 +99,19 @@ export default {
       apiKey: apiKey,
       offices: offices,
       acl: acl,
-      selectedOffice: offices[0],
-      applications
+      selectedOffice: offices[1],
+      applications,
+      franchise: {
+        agentControl: true
+      }
     };
   },
   computed: {
     inboxURL: function() {
       return `https://${this.selectedOffice.toLowerCase()}.ds.bhhsresource.com/inbox/`;
+    },
+    currentUserIsFranchiseAdmin() {
+      return this.selectedOffice === "FranchiseAdminExample";
     }
   },
   methods: {
@@ -258,4 +282,10 @@ export default {
   // Import Bulma and Buefy styles
   @import "~bulma";
   @import "~buefy/src/scss/buefy";
+</style>
+
+<style lang='css'>
+.section {
+  padding: 1em 0;
+}
 </style>
